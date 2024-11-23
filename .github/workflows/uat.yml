@@ -1,4 +1,4 @@
-name: Deploy Dev Environment
+name: Deploy UAT Environment
 
 on:
   push:
