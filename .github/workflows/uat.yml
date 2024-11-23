@@ -3,7 +3,7 @@ name: Deploy Dev Environment
 on:
   push:
     branches:
-      - dev  # Ce workflow s'exécute uniquement pour la branche dev
+      - uat  # Ce workflow s'exécute uniquement pour la branche dev
 
 jobs:
   deploy:
