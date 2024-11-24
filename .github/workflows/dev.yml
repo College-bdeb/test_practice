@@ -12,6 +12,30 @@ jobs:
     steps:
       - name: Checkout code  # Étape pour cloner le code source de la branche dev
         uses: actions/checkout@v2
+      
+      - name: Check if required files exist
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Error: index.html is missing!"
+            exit 1
+          fi
+          if [ ! -f style.css ]; then
+            echo "Error: style.css is missing!"
+            exit 1
+          fi
+
+      - name: Validate index.html for required content
+        run: |
+          if ! grep -q '<p id="nom_etudiant">' index.html; then
+            echo "Error: index.html does not contain the expected <p id='nom_etudiant'> element!"
+            exit 1
+          fi
+
+      # # Optional: Add HTML validation step
+      # - name: Validate HTML Syntax
+      #   uses: chrislennon/action-htmlhint@v1
+      #   with:
+      #     files: "index.html"
 
       - name: Deploy to GitHub Pages (Dev)  # Étape pour déployer sur GitHub Pages
         uses: peaceiris/actions-gh-pages@v3  # Utilise l'action pour GitHub Pages
