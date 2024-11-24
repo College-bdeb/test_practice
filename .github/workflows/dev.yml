@@ -26,7 +26,7 @@ jobs:
 
       - name: Validate index.html for required content
         run: |
-          if ! grep -q '<p id="nom_etudiant">' index.html; then
+          if ! grep -q '<span id="nom_etudiant">' index.html; then
             echo "Error: index.html does not contain the expected <p id='nom_etudiant'> element!"
             exit 1
           fi
